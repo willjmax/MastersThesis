@@ -1,0 +1,3 @@
+\contentsline {chapter}{Singular Value Decomposition}{iv}
+\contentsline {chapter}{Fenchel Conjugate}{vi}
+\contentsline {chapter}{Symmetric Functions}{viii}

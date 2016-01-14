@@ -1,0 +1,53 @@
+\chapter{Fenchel Conjugate}
+
+\begin{definition}
+For any function $f: \R^n \rightarrow \overline{\R}$ the \textbf{Fenchel conjugate} $f^*: \R^n \rightarrow \overline{\R}$ is defined by
+
+\begin{align*}
+f^*(v) &= \mathrm{sup}\{\langle v, x \rangle - f(x) \mid x \in \R^n \} \\
+f^*(v) &= \mathrm{sup}\{\langle v, x \rangle - f(x) \mid x \in \mathrm{dom}(f) \}
+\end{align*}
+
+Note that the Fenchel conjugate is always convex as it is the supremum of a family of affine functions, and it is order reversing in the sense that $f(x) \leq g(x)$ for all $x \in \R^n$ implies that $f^*(v) \geq g^*(v)$ since for all $v \in \R^n$.
+\begin{equation*}
+f^*(v) = \mathrm{sup}\{\langle v, x \rangle - f(x) \mid x \in \R^n \} \leq \mathrm{sup}\{\langle v, x \rangle - g(x) \mid x \in \R^n \} = g^*(v).
+\end{equation*}
+
+\begin{lemma}
+Let $f: \R^n \rightarrow \overline{\R}$ be a function with $\mathrm{dom}(f) \neq \emptyset$. Then we have $\langle v, x \rangle \leq f(x) + f^*(v)$ for all $x, v \in \R^n$.
+\end{lemma}
+
+\begin{proof}
+From the definition of the Fenchel conjugate it follows
+\begin{align*}
+f^*(v) &= \mathrm{sup}\{ \langle v, x \rangle - f(x) \mid \forall x \in \R^n \}
+ \\
+f^*(v) &\geq \langle v, x \rangle - f(x) \\
+f^*(v) + f(x) &\geq \langle v, x \rangle
+\end{align*}
+
+\end{proof}
+
+\begin{theorem}
+For any convex function $f: \R^n \rightarrow \overline{\R}$ and any $\overline{x} \in \mathrm{dom}(f)$, we have $v \in \partial f(\overline{x})$ if and only if $f(\overline{x}) + f^*(v) = \langle v, \overline{x} \rangle$.
+\end{theorem}
+
+\begin{proof}
+\item By the previous lemma we have $\langle v, \overline{x} \rangle \leq f(\overline{x}) + f^*(v)$. Since $v \in \partial f(\overline{x})$ we have for all $x \in \R^n$
+\begin{align*}
+f(\overline{x}) + \langle v, x \rangle - f(x) &\leq \langle v, \overline{x} \rangle \\
+f(\overline{x}) + \mathrm{sup}\{ \langle v, x \rangle - f(x) \} &\leq \langle v, \overline{x} \rangle \\
+f(\overline{x}) + f^*(v) &\leq \langle v, \overline{x} \rangle
+\end{align*}
+
+Conversely, we have 
+\begin{align*}
+f(\overline{x}) + f^*(v) &= \langle v, \overline{x} \rangle \\
+f(\overline{x}) + \mathrm{sup}\{ \langle v, x - f(x) \mid \forall x \in \R^n \} &= \langle v, \overline{x} \rangle \\
+f(\overline{x}) + \langle v, x \rangle - f(x) &\leq \langle v, \overline{x} \rangle \\
+\langle v, x - \overline{x} \rangle &\leq f(x) - f(\overline{x})
+\end{align*}
+Thus, $v \in \partial f(\overline{x})$.
+\end{proof}
+
+\end{definition}

@@ -1,0 +1,141 @@
+%%%---- Do not adjust ----%%%
+\documentclass[11pt,oneside]{book}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{epstopdf}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{epsfig}
+\usepackage{color}
+\parindent 0em
+\parskip .5em
+
+\setlength{\textwidth}{6in} \setlength{\topmargin}{-0.2in}
+\setlength{\textheight}{9.0in} \setlength{\oddsidemargin}{0in}
+\renewcommand{\baselinestretch}{1.1}
+\def\disp{\displaystyle}
+\def\Lim{\mathop{{\rm Lim}}}
+\def\F{Fr\'{e}chet}
+\def\G{G\^{a}teaux}
+\def\P{Painlev\'{e}}
+\def\H{Hadamard}
+\def\Limsup{\mathop{{\rm Lim}\,{\rm sup}}}
+\def\Liminf{\mathop{{\rm Lim}\,{\rm inf}}}
+\def\hhat#1{\hat{\vbox{\baselineskip=0pt\vskip-1.8pt
+\hbox{$\hat{\vbox{\baselineskip=0pt\vskip- 0.8pt\hbox{$\!#1$}}}$}}}}
+\def\HHat#1{\widehat{\vbox{\baselineskip=0pt\vskip-1.5pt
+\hbox{$\widehat{\vbox{\baselineskip=0pt\vskip-
+0.5pt\hbox{$#1$}}}$}}}}
+\def\tto{\;{\lower 1pt \hbox{$\rightarrow$}}\kern -10pt
+\hbox{\raise 2pt \hbox{$\rightarrow$}}\;}
+\def\Hat{\widehat}
+\def\Tilde{\widetilde}
+\def\Bar{\overline}
+\def\ra{\rangle}
+\def\la{\langle}
+\def\ve{\varepsilon}
+\def\B{\Bbb B}
+\def\h{\hfill\Box}
+\def\R{\Bbb R}
+\def\N{I\!\!N}
+\def\ox{\bar{x}}
+\def\ow{\bar{w}}
+\def\oy{\bar{y}}
+\def\oz{\bar{z}}
+\def\ov{\bar{v}}
+\def\ou{\bar{u}}
+\def\ot{\bar{t}}
+\def\om{\bar{\omega}}
+\def\co{\mbox{\rm co}\,}
+\def\gph{\mbox{\rm gph}\,}
+\def\epi{\mbox{\rm epi}\,}
+\def\dim{\mbox{\rm dim}\,}
+\def\dom{\mbox{\rm dom}\,}
+\def\ker{\mbox{\rm ker}\,}
+\def\proj{\mbox{\rm proj}\,}
+\def\lip{\mbox{\rm lip}\,}
+\def\reg{\mbox{\rm reg}\,}
+\def\cov{\mbox{\rm cov}\,}
+\def\clco{\mbox{\rm cl}^*\mbox{\rm co}\,}
+\def\cl{\mbox{\rm cl}\,}
+\def\cone{\mbox{\rm cone}\,}
+\def\rge{\mbox{\rm rge}\,}
+\def\i{\mbox{\rm int}\,}
+\def\substack#1#2{{\scriptstyle{#1}\atop\scriptstyle{#2}}}
+\def\subsubstack#1#2#3{{{{\scriptstyle{#1}}\atop{\scriptstyle{#2}}}
+\atop{\scriptstyle{#3}}}}
+\def\h{\hfill\square}
+\def\dn{\downarrow}
+\def\O{\Omega}
+\def\ph{\varphi}
+
+
+
+\def\emp{\emptyset}
+\def\st{\stackrel}
+\def\oR{\Bar{\R}}
+\def\lm{\lambda}
+\def\gg{\gamma}
+\def\dd{\delta}
+\def\al{\alpha}
+\def\Th{\Theta}
+\def \N{I\!\!N}
+\def\th{\theta}
+\def\t{\tau}
+\newcounter{lk}
+\newenvironment{lista}{\begin{list}{\rm\alph{lk})}{\usecounter{lk}%
+\setlength{\itemindent}{0cm}%
+}}{\end{list}}
+
+\newenvironment{listi}{\begin{list}{\rm(\textit{\roman{lk}})}{\usecounter{lk}%
+\setlength{\itemindent}{-0.2cm}%
+}}{\end{list}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{preamble.tex}
+%%%-----------------------%%%
+
+%Add your data to the following commands.
+%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\mythesistitle}{Nuclear Norm stuff}
+\newcommand{\myname}{William J. Maxwell}
+\newcommand{\myyear}{2016}
+\newcommand{\degreeone}{B.S. Computer Science}
+\newcommand{\degreeoneshort}{ }
+\newcommand{\degreetwo}{ }
+\newcommand{\degreetwoshort}{ }
+\newcommand{\majoradvisor}{Mau Nam Nguyen}
+\newcommand{\secondreader}{ }
+
+%%%%%%%%%%%%%%%%%%%%%
+
+%%%---- Do not adjust ----%%%
+\begin{document}
+\input{frontmatter.tex}
+\singlespacing
+\tableofcontents
+%\thispagestyle{plain}
+%\mainmatter
+%\doublespacing
+%%%-----------------------%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\listoffigures
+\newpage
+%%%---- Input content ----%%%
+\input{ch1.tex}
+\input{ch2.tex}
+\input{ch3.tex}
+%... etc.
+%%%-----------------------%%%
+
+%\newpage
+%\addcontentsline{toc}{chapter}{Bibliography}
+%\bibliography{thesis}{}
+%\bibliographystyle{amsplain}
+
+
+
+\end{document} 

@@ -1,0 +1,78 @@
+\chapter{Singular Value Decomposition}
+
+%\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{definition/theorem}{Definition/Theorem}
+\newtheorem{exercise}{Exercise}
+
+Consider a real matrix $A \in \R^{m \times n}$. For any such matrix there are four fundamental subspaces associated with it. These are $\mathit{null}(A) \subset \R^n$, $\mathit{null}(A^T) \subset \R^m$, $\mathit{col}(A) \subset \R^m$, and $\mathit{col}(A^T) \subset \R^n$. It can easily be shown that $\mathit{null}(A) \perp \mathit{col}(A^T)$ and $\mathit{null}(A^T) \perp \mathit{col}(A)$ and furthermore are orthogonal complements of each other.
+
+\begin{lemma}
+$\mathit{null}(A)$ and $\mathit{col}(A^T)$ are orthogonal complements in $\R^n$.
+\end{lemma}
+\begin{proof}
+Let $v \in \mathit{null}(A)$ and $u \in \mathit{col}(A^T)$. Then $\langle u, v \rangle = \langle A^Tb, v \rangle$ for some $b \in \R^m$, so $\langle A^Tb, v \rangle = (A^Tb)^Tv = b^T Av = b^T0 = 0$. Thus, $\mathit{null}(A) \perp \mathit{col}(A^T)$. Since $\mathit{dim} (\mathit{col}(A^T)) = \mathit{rank}(A)$ the rank-nullity theorem tells us that the sum of the dimensions of $\mathit{col}(A^T)$ and $\mathit{null}(A)$ is $n$. So, every vector in $\R^n$ is in $\mathit{null}(A)$ or $\mathit{col}(A^T)$. Thus they are orthogonal complements.
+\end{proof}
+
+\begin{theorem}
+
+Let $A \in \R^{m \times n}$. Then there exists $U \in \R^{m \times m}$, $V \in \R^{n \times n}$, $\Sigma \in \R^{m \times n}$ such that $U, V$ are orthogonal and $\Sigma$ is diagonal-like with $A = U \Sigma V^{T}$.
+
+\end{theorem}
+
+\begin{proof}
+
+\item Let $A \in \R^{m \times n}$ then define $L = A^{T}A \in R^{n \times n}$. Note that $L$ is positive semi-definite since for $x \in \R^n$ we have $\langle Lx, x \rangle = \langle A^{T}Ax, x \rangle = \langle Ax, Ax \rangle = \|Ax\|^2 \geq 0$. Similarly, define $M = AA^T \in \R^{m \times m}$ which is also positive semi-definite.
+
+\item Let $x \in \mathit{null}(A)$ then $Ax = 0 \implies A^{T}Ax = A^{T}0 = 0 \implies Lx = 0 \implies x \in \mathit{null}(L)$.
+
+\item Let $x \in \mathit{null}(L)$ then $Lx = 0 \implies \langle Lx, x \rangle = \langle 0, x \rangle = 0 \implies \langle A^{T}Ax, x \rangle = 0 \implies \langle Ax, Ax \rangle = 0 \implies \|Ax\|^2 = 0 \implies Ax = 0$, so $x \in \mathit{null}(A)$ and $\mathit{null}(A) = \mathit{null}(L)$.
+
+\item Consequently, we have $\mathit{range}(L) = \mathit{range}(L^T) = \mathit{null}(L)^{\perp} = \mathit{null}(A)^{\perp} = \mathit{range}(A^T)$.
+
+\item Similarly, $\mathit{range}(M) = \mathit{range}(A)$ and $\mathit{null}(A^T) = \mathit{null}(M)$.
+
+\item Since $\mathit{rank}(A) = \mathit{rank}(A^T)$ we have $\mathit{rank}(L) = \mathit{rank}(A^T) = \mathit{rank}(A) = \mathit{rank}(M) = \rho$.
+
+
+\item Now we need to find orthonormal bases for $\mathit{null}(A) = \mathit{null}(L)$, $\mathit{null}(A^T) = \mathit{null}(M)$, $\mathit{range}(A^T) = \mathit{range}(L)$, and $\mathit{range}(A) = \mathit{range}(M)$.
+
+\item Since $L$ is positive semi-definite there exists an orthonormal basis for $\mathit{null}(L) = \mathit{null}(A)$ given by $\phi_1, ..., \phi_{N_A}$ which are eigenvectors of $L$ corresponding to the eigenvalue $0$.
+
+\item Since $M$ is positive semi-definite there exists an orthonormal basis for $\mathit{null}(M) = \mathit{null}(A^T)$ given by $\psi_1, ..., \psi_{N_A}$ which are eigenvectors of $M$ corresponding to the eigenvalue $0$.
+
+\item Since $L$ is positive semi-definite there exist positive eigenvalues $\lambda_1 \geq ... \geq \lambda_\rho > 0$ and their eigenvectors $v_1, ..., v_\rho$ form an orthonormal basis for $\mathit{range}(L) = \mathit{range}(A^T)$.
+
+\item We have an orthonormal basis of $\mathit{range}(L) = \mathit{range}(A^T)$ consisting of eigenvectors $v_1, ..., v_\rho$ corresponding to eigenvalues $\lambda_1 \geq ... \geq \lambda_\rho > 0$. So, $Lv_j = \lambda_j v_j$. Define $w_j = Av_j$. Then $\langle w_i, w_j \rangle = \langle Av_i, Av_j \rangle = \langle v_i, A^{T}Av_j \rangle = \langle v_i, Lv_j \rangle = \langle v_i, \lambda_j v_j \rangle$. This equals $0$ when $i \neq j$ and $\lambda_j$ when $i = j$. So, $w_1, ... w_\rho$ are orthogonal, but $\|w_j\|^2 = \lambda_j$. Define $u_j = \frac{w_j}{\|w_j\|} = \frac{w_j}{\sqrt{\lambda_j}}$ then $u_1, ..., u_\rho$ form an orthonormal basis for $\mathit{range}(M) = \mathit{range}(A)$. Denote $\sigma_j = \sqrt{\lambda_j}$ we call these the singular values of $A$. Note that $u_j = \frac{w_j}{\sigma_j} = \frac{Av_j}{\sigma_j} \implies Av_j = \sigma_j u_j$ and $A^T u_j = \frac{A^{T}Av_j}{\sigma_j} = \frac{Lv_j}{\sigma_j} = \frac{\lambda_j v_j}{\sigma_j} = \sigma_j v_j$. This is the fundamental relation of singular values.
+
+\item Now that we have orthonormal bases, we can construct the matrices $U = [u_1\, ...\, u_\rho\, \psi_1\, ...\, \psi_{N_{A^T}}] \in \R^{m \times m} $ and $V = [v_1\, ...\, v_\rho\, \phi_1\, ...\, \phi_{N_A}] \in \R^{n \times n}$. Note that both $U$ and $V$ are orthogonal since they are constructed from orthonormal column vectors. Then we have $AV = [Av_1\, ...\, Av_\rho\, A\phi_1\, ...\, A\phi_{N_A}] = [\sigma_1 u_1 \, ... \, \sigma_\rho u_\rho \, 0 \, ... \, 0]$. It follows that
+
+\begin{equation}
+U^{T}AV = \begin{bmatrix}
+		u_{1}^{T} \\
+		\vdots \\
+		u_{\rho}^{T} \\
+		\psi_{1}^{T} \\
+		\vdots \\
+		\psi_{N_{A^T}}^{T}
+	   \end{bmatrix}
+\begin{bmatrix}
+\sigma_1 u_1 & ... & \sigma_\rho u_\rho & 0 & ... & 0
+\end{bmatrix} = 
+\begin{bmatrix}
+\sigma_1 & 0 & ... & 0 & 0 & ... & 0 \\
+0 & \sigma_2 & ... & 0 & 0 & ... & 0 \\
+\vdots \\
+0 & 0 & ... & \sigma_\rho & 0 & ... & 0 \\
+0 & 0 & ... & 0 & 0 & ... & 0 \\
+\vdots \\
+0 & 0 & ... & 0 & 0 & ... & 0
+\end{bmatrix} = \Sigma
+\end{equation}
+
+And by the orthogonality of $U^T$ and $V$ we have $A = U \Sigma V^T$.
+
+\end{proof}

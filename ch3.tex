@@ -1,0 +1,84 @@
+\chapter{Symmetric Functions}
+
+We define the function $[\cdot]: \R^n \rightarrow \R^n$ to map $x$ to the vector consisting of the components of $x$ in nonincreasing order. We call a function $f: \R^n \rightarrow \R^n$ symmetric if $f(x) = f([x])$. Note that for $x, y \in \R^n$ we have $x^T y \leq [x]^T [y]$ since $x^T y = x_1 y_1 + ... + x_n y_n$ and $[x]^T [y] = [x]_1 [y]_1 + ... + [x]_n [y]_n$ and for each $i = 1, ..., n$ we have $x_i \leq [x]_i$ and $y_i \leq [y]_i$.
+
+\begin{definition}
+The spectral function is defined as $\lambda: \mathbb{S}^n \rightarrow \R^n$ assigning $X \in \mathbb{S}^n$ to the vector $x \in \R^n$ such that $x = (\lambda_1(X), \lambda_2(X), ..., \lambda_n(X))$ where each $\lambda_i(X)$ is an eigenvalue of $X$ and $\lambda_1(X) \geq \lambda_2(X) \geq ... \geq \lambda_n(X)$.
+\end{definition}
+
+\begin{definition}
+Two matrices $X, Y \in \mathbb{S}^n$ have a \textbf{simultaneous ordered spectral} decomposition if there exists a matrix $U \in \mathbb{O}^n$ with $X = U^T(\rm{Diag}(\lambda(X)))U$ and $Y = U^T(\rm{Diag}(\lambda(Y)))U$.
+\end{definition}
+
+\begin{theorem}
+Any matrices $X$ and $Y$ in $\mathbb{S}^n$ satisfy the inequality
+\begin{equation*}
+\rm{tr}(XY) \leq \lambda(X)^T \lambda(Y)
+\end{equation*}
+Equality holds if and only if $X$ and $Y$ have a simultaneous ordered spectral decomposition
+\end{theorem}
+
+\begin{theorem}
+If $f: \R^n \rightarrow \overline{\R}$ is a symmetric function, then $(f \circ \lambda)^* = (f^* \circ \lambda)$.
+\end{theorem}
+
+\begin{proof}
+By Fan's inequality for $Y \in \mathbb{S}^n$ it follows that
+\begin{align*}
+(f \circ \lambda)^*(Y) &= \underset{X \in \mathbb{S}^n}{\operatorname{sup}} \{\mathrm{tr}(XY) - f(\lambda(X))\} \\
+&\leq \underset{X \in \mathbb{S}^n}{\operatorname{sup}} \{\lambda(X)^T\lambda(Y) - f(\lambda(X))\} \\
+&\leq \underset{x \in \mathbb{R}^n}{\operatorname{sup}} \{ x^T \lambda(Y) - f(x) \} \\
+&= f^*(\lambda(Y))
+\end{align*}
+
+Then by using the spectral decomposition $Y = U^T(\operatorname{Diag}(\lambda(Y)))U$ for some $U \in \mathbb{O}^n$ we have the inequality
+
+\begin{align*}
+f^*(\lambda(Y)) &= \underset{x \in \R^n}{\operatorname{sup}} \{x^T \lambda(Y) - f(x) \} \\
+&= \underset{x}{\operatorname{sup}} \{\operatorname{tr}(\operatorname{Diag}(x)UYU^T) - f(x) \} \\
+&= \underset{x}{\operatorname{sup}} \{\operatorname{tr}(U^T(\operatorname{Diag}(x)UY)) - f(\lambda(U^T \operatorname{Diag}(x)U)) \} \\
+&\leq \underset{X \in \mathbb{S}^n}{\operatorname{sup}} \{ \operatorname{tr}(XY) - f(\lambda(X)) \} \\
+&= (f \circ \lambda)^*(Y)
+\end{align*}
+
+\end{proof}
+
+\begin{theorem}
+If $f: \R^n \rightarrow \overline{\R}$ is a symmetric function, then for any matrices $X, Y \in \mathbb{S}^n$ the following are equivalent:
+\\
+(i) $Y \in \partial(f \circ \lambda)(X)$.
+\\
+(ii) $X$ and $Y$ have a simultaneous ordered spectral decomposition and satisfy $\lambda(Y) \in \partial f(\lambda(X))$.
+\\
+(iii) $X = U^T(\mathrm{Diag}(x))U$ and $Y = U^T(\mathrm{Diag}(y))U$ for some matrix $U \in \mathbb{O}^n$ and vectors $x, y \in \R^n$ with $y \in \partial f(x)$.
+\end{theorem}
+
+\begin{proof}
+\item $(i \implies ii)$ Let $Y \in \partial (f \circ \lambda)(X)$. By Fan's inequality we have $\mathrm{tr}(XY) \leq \lambda(Y)^T \lambda(X)$. Since $Y$ is in the subdifferential it follows from the preceeding theorem and a lemma about the Fenchel conjugate that:
+\begin{align*}
+(f \circ \lambda)(X) + (f \circ \lambda)^*(Y) &= \langle X, Y \rangle = \operatorname{tr}(XY) \\
+f(\lambda(X)) + f^*(\lambda(Y)) &= \operatorname{tr}(XY) \\
+\langle \lambda(Y), \lambda(X) \rangle &\leq \operatorname{tr}(XY) \\
+\lambda(Y)^T \lambda(X) &\leq \operatorname{tr}(XY)
+\end{align*}
+Since $\operatorname{tr}(XY) = \lambda(Y)^T \lambda(X)$ it follows that $X$ and $Y$ have a simultaneous ordered spectral decomposition. Using the fact that $X$ and $Y$ have a simultaneous ordered spectral decomposition we get
+\begin{align*}
+(f \circ \lambda)(X) + (f \circ \lambda)^*(Y) &= \langle X, Y \rangle = \operatorname{tr}(XY) \\
+(f \circ \lambda)(X) + (f \circ \lambda)^*(Y) &= \lambda(X)^T \lambda(Y) \\
+f(\lambda(X)) + f^*(\lambda(Y)) &= \langle \lambda(X), \lambda(Y) \rangle
+\end{align*}
+
+So, by the lemma we have $\lambda(Y) \in \partial f(\lambda(X))$.
+
+\item $(ii \implies i)$ Since $X$ and $Y$ have a simultaneous ordered spectral decomposition it follows from the definition of $\lambda(Y) \in \partial f(\lambda(X))$ that
+\begin{align*}
+\langle \lambda(Y), \lambda(\overline{X}) - \lambda(X) \rangle &\leq f(\lambda(Y)) - f(\lambda(X)) \\
+\langle \lambda(Y), \lambda(\overline{X}) \rangle - \langle \lambda(Y), \lambda(X) \rangle &\leq (f \circ \lambda)(Y) - (f \circ \lambda)(X) \\
+\operatorname{tr}(Y\overline{X}) - \operatorname{tr}(YX) &\leq (f \circ \lambda)(Y) - (f \circ \lambda)(X) \\
+\operatorname{tr}(Y(\overline{X} - X) &\leq (f \circ \lambda)(Y) - (f \circ \lambda)(X) \\
+\langle Y, \overline{X} - X \rangle &\leq (f \circ \lambda)(Y) - (f \circ \lambda)(X)
+\end{align*}
+
+Thus, $Y \in \partial (f \circ \lambda)(X)$.
+
+\end{proof}
