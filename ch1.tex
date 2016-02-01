@@ -1,4 +1,4 @@
-\chapter{Singular Value Decomposition}
+\chapter{Matrix Decompositions}
 
 %\newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
@@ -75,4 +75,36 @@ U^{T}AV = \begin{bmatrix}
 
 And by the orthogonality of $U^T$ and $V$ we have $A = U \Sigma V^T$.
 
+\end{proof}
+
+\begin{theorem}
+\item Let $X$ be an $n \times n$ symmetric matrix. Then $X = U^T \lambda(X) U$ where $\lambda(X)$ is an $n \times n$ matrix containing the $n$ real eigenvalues of $X$ across the diagonal and $U$ is an orthogonal matrix.
+\end{theorem}
+\begin{proof}
+\item Let $\lambda_1,...,\lambda_n$ be the eigenvalues of $X$ corresponding to the eigenvectors $U_1,...,U_n$ and let $U = [U_1,...,U_n]$. Then we have the following
+\begin{align*}
+XU &= X[U_1,...,U_n]\\
+&= [XU_1,...,XU_n]\\
+&= [\lambda_1 U_1,...,\lambda_n U_n]\\
+&= \begin{bmatrix}
+	\lambda_1 u_{11} & ... & \lambda_n u_{n1} \\
+	\lambda_1 u_{12} & ... & \lambda_n u_{n2} \\
+	\vdots \\
+	\lambda_1 u_{1n} & ... & \lambda_n u_{nn}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+	u_{11} & ... & u_{n1} \\
+	u_{12} & ... & u_{n2} \\
+	\vdots \\
+	u_{1n} & ... & u_{nn}
+\end{bmatrix}
+\begin{bmatrix}
+	\lambda_1 & 0 & ... & 0 \\
+	0 & \lambda_2 & ... & 0 \\
+	\vdots \\
+	0 & 0 & ... & \lambda_n
+\end{bmatrix}\\
+&= U(\lambda(X))
+\end{align*}
+Since $U$ consists of eigenvectors it is an orthogonal matrix and we have $X = U(\lambda(X))U^T$ and since $X$ is a symmetric matrix we have $X = U^T(\lambda(X))U$.
 \end{proof}

@@ -10,6 +10,16 @@ The spectral function is defined as $\lambda: \mathbb{S}^n \rightarrow \R^n$ ass
 Two matrices $X, Y \in \mathbb{S}^n$ have a \textbf{simultaneous ordered spectral} decomposition if there exists a matrix $U \in \mathbb{O}^n$ with $X = U^T(\rm{Diag}(\lambda(X)))U$ and $Y = U^T(\rm{Diag}(\lambda(Y)))U$.
 \end{definition}
 
+
+
+\begin{theorem} 
+Every double stochastic matrix can be represented as a convex combination of permutation matrices.
+\end{theorem}
+
+\begin{proof}
+\item It is sufficient to show that permutation matrices are the extreme points of $\mathbb{\Gamma}^n$. Let $P$ be a permutation matrix such that $P = \lambda Q + (1 - \lambda)R$ for $Q, R \in \mathbb{\Gamma}^n$ and $\lambda \in (0, 1)$. Let $p_{ij}$ be an entry in $P$. If $p_{ij} = 1$ then $q_{ij} = r_{ij} = 1$ and if $p_{ij} = 0$ then $q_{ij} = r_{ij} = 0$. It follows that $P = Q = R$ so the convex combination is trivial and $P$ is an extreme point.
+\end{proof}
+
 \begin{theorem}
 Any matrices $X$ and $Y$ in $\mathbb{S}^n$ satisfy the inequality
 \begin{equation*}
@@ -81,4 +91,16 @@ So, by the lemma we have $\lambda(Y) \in \partial f(\lambda(X))$.
 
 Thus, $Y \in \partial (f \circ \lambda)(X)$.
 
+\item $(ii \implies iii)$ Since $X$ and $Y$ have a simultaneous ordered spectral decomposition we have $X = U^T(\operatorname{Diag}(\lambda(X)))U$ and $Y = U^T(\operatorname{Diag}(\lambda(Y)))U$ for some $U \in \mathbb{O}^n$. Let $x = \lambda(X)$ and $y = \lambda(Y)$ then $X = U^T(\operatorname{Diag}(x))U$ and $Y = U^T(\operatorname{Diag}(y))U$. Since $\lambda(Y) \in \partial f(\lambda(X))$ it immediately follows that $y \in \partial f(x)$.
+
+\item $(iii \implies ii)$ Let $X = U^T (\operatorname{Diag}(x))U$ and $Y = U^T (\operatorname{Diag}(y))U$ for some matrix $U \in \mathbb{O}^n$ with $x, y \in \R^n$ and $y \in \partial f(x)$. Then by taking determinants we have
+\begin{align*}
+\det (X - \lambda I) &= \det (U^T (\diag(x))U - \lambda I)\\
+&= \det(U^T (\diag(x)) U) - U^T(\lambda I)U)\\
+&= \det(U^T (\diag(x) - \lambda I)U)\\
+&= \det(U^T) \det(\diag(x) - \lambda I) \det(U) \\
+&= \det(\diag(x) - \lambda I)\\
+&= (x_1 - \lambda)(x_2 - \lambda)...(x_n - \lambda)
+\end{align*}
+It follows that the eigenvalues of $X$ are the components of the vector $x$, thus $x = \lambda(X)$ and $X = U^T (\lambda(x))U$. A similar argument shows that $y = \lambda(y)$ and $Y = U^T (\lambda(y)) U$. Then $y \in \partial f(x)$ implies that $\lambda(y) \in \partial f(\lambda(x))$.
 \end{proof}
